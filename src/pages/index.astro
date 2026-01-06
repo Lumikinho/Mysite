@@ -1,11 +1,42 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../styles/global.css";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="pt-BR">
+  <body
+    class="flex w-full gap-16 max-w-5xl md:px-8 min-h-screen mx-auto px-6 bg-zinc-950 text-zinc-100 backdrop-grayscale"
+  >
+    <!-- SideBar -->
+    <div class="min-h-screen flex">
+      <aside
+        class="w-64 border-r border-zinc-800 bg-zinc-950 px-6 py-8 flex flex-col gap-8"
+      >
+        <div class="space-y-2">
+          <div class="h-16 w-16 rounded-full bg-zinc-800">
+            <img
+              src="https://i.pinimg.com/736x/c4/4d/fa/c44dfa3073a1a7278f6dfdba3dc3f930.jpg"
+              alt=""
+              class="rounded-full hover:animate-spin"
+            />
+          </div>
+          <div>
+            <p class="text-sm text-zinc-400">
+              Estudante de Desenvolvimento de Sistemas
+            </p>
+            <h1 class="text-lg font-semibold group cursor-pointer">
+              <span class="group-hover:hidden">Lumiko</span>
+              <span class="hidden group-hover:inline text-zinc-700">Lucas</span>
+            </h1>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <!-- SideBar End -->
+    <div>
+    
+	  <div id="Sonbre" class="flex flex-col h-full backdrop-blur-sm bg-card/50 border border-border/50 rounded-xl gap-0 py-0 shadow-sm text-card-foreground" data-slot="card"> <h1>OI</h1> </div>
+
+	  </h1>
+    </div>
+  </body>
+</html>
