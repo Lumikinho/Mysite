@@ -1,8 +1,9 @@
 ---
 import "../styles/global.css";
-import ContactLinks from "../components/ContactLinks";
-import WeatherCard from "../components/Weather";
-import GithubCard from "../components/GithubCard";
+import About from "../layouts/About.astro";
+import Cards from "../layouts/Cards.astro";
+import Header from "../layouts/Header.astro";
+import Skills from "../components/Skills.tsx";
 ---
 
 <html lang="pt-BR">
@@ -11,111 +12,15 @@ import GithubCard from "../components/GithubCard";
     <title>Lumiko</title>
   </head>
 
-  <body class="min-h-screen bg-zinc-950 text-zinc-100">
-    <header
-      class="sticky top-0 z-40 border-b border-zinc-800 bg-zinc-950/90 backdrop-blur"
-    >
-      <nav
-        class="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 md:px-6"
-      >
-        <!-- Logo / nome -->
-        <a href="/" class="flex items-center gap-2">
-          <div class="h-8 w-8 rounded-full bg-zinc-800 overflow-hidden">
-            <img
-              src="https://i.pinimg.com/736x/c4/4d/fa/c44dfa3073a1a7278f6dfdba3dc3f930.jpg"
-              alt="Avatar de Lumiko"
-              class="h-full w-full object-cover hover:animate-spin"
-            />
-          </div>
-          <div class="leading-tight">
-            <p class="text-sm font-semibold">Lumiko</p>
-            <p class="text-[11px] text-zinc-400">
-              Estudante de Desenvolvimento de Sistemas
-            </p>
-          </div>
-        </a>
-
-        <!-- Links desktop -->
-        <div class="hidden items-center gap-6 text-sm text-zinc-300 md:flex">
-          <a href="#Sobre" class="hover:text-zinc-100">Sobre</a>
-          <a href="#Projetos" class="hover:text-zinc-100">Projetos</a>
-          <a href="#Contact" class="hover:text-zinc-100">Contato</a>
-        </div>
-
-        <!-- Botão mobile -->
-        <button
-          class="inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 p-2 text-zinc-100 md:hidden"
-          onclick="document.getElementById('mobile-nav')?.classList.toggle('hidden')"
-        >
-          <svg
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </nav>
-
-      <!-- Menu mobile -->
-      <div
-        id="mobile-nav"
-        class="hidden border-t border-zinc-800 bg-zinc-950 md:hidden"
-      >
-        <div
-          class="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-3 text-sm text-zinc-300"
-        >
-          <a href="#Sobre" class="rounded-md px-2 py-1 hover:bg-zinc-900"
-            >Sobre</a
-          >
-          <a href="#Projetos" class="rounded-md px-2 py-1 hover:bg-zinc-900"
-            >Projetos</a
-          >
-          <a href="#Contact" class="rounded-md px-2 py-1 hover:bg-zinc-900"
-            >Contato</a
-          >
-        </div>
-      </div>
-    </header>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 font-inter transition-all duration-300">
+    <Header />
 
     <!-- CONTEÚDO -->
-
     <main class="mx-auto w-full max-w-5xl px-4 py-8 md:px-6 md:py-10">
-      <section id="Sobre" class="mb-10">
-        <h1 class="mb-2 text-3xl font-semibold">Sobre Mim</h1>
-        <p class="text-zinc-200">
-          Sou estudante no SESI e curso Desenvolvimento de Sistemas no SENAI.
-        </p>
-        <br />
-        <p class="text-zinc-200">
-          Gosto de criar programas, sites e estudar outras linguagens.
-        </p>
-      </section>
-
-      <section class="mt-8 space-y-4 md:space-y-6">
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <WeatherCard client:load />
-          <GithubCard username="Lumikinho" client:load />
-
-          <!-- mais cards -->
-          <section
-            class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6"
-            id="Contact"
-          >
-            <h2 class="text-xl font-semibold">Contato</h2>
-            <p class="mt-1 text-sm text-zinc-200">
-              Está interessado em conversar, discutir ou fazer algo juntos?
-            </p>
-
-            <ContactLinks client:load />
-          </section>
-        </div>
-      </section>
+      <About />
+      <Cards />
+      <Skills client:load />
     </main>
+    
   </body>
 </html>

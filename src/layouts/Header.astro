@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-zinc-800 bg-zinc-900/90 backdrop-blur"
+>
+  <nav
+    class="mx-auto flex h-20 max-w-5xl items-center justify-center px-4 md:px-6"
+  >
+    <!-- Logo / nome -->
+    <a href="/" class="flex items-center gap-2">
+      <div class="h-12 w-12 rounded-full bg-zinc-800 overflow-hidden">
+        <Image
+          src="https://i.pinimg.com/736x/c4/4d/fa/c44dfa3073a1a7278f6dfdba3dc3f930.jpg"
+          alt="Meu avatar"
+          width={48}
+          height={48}
+          class="h-full w-full object-cover hover:animate-spin"
+        />
+      </div>
+      <div class="leading-tight">
+        <p class="text-base font-semibold">Lumiko</p>
+        <p class="text-xs text-zinc-400">
+          Estudante de Desenvolvimento de Sistemas
+        </p>
+      </div>
+    </a>
+  </nav>
+</header>

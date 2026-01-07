@@ -1,0 +1,33 @@
+---
+import AcademicCard from "../components/AcademicCard.astro";
+import ContactLinks from "../components/ContactLinks.astro";
+import GithubCard from "../components/GithubCard";
+import WeatherCard from "../components/Weather";
+---
+
+<section class="mt-8 space-y-4 md:space-y-6">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <WeatherCard
+      city="Sumare,BR"
+      apiKey={import.meta.env.PUBLIC_OPENWEATHER_KEY}
+      client:load
+    />
+    <GithubCard username="Lumikinho" client:load />
+
+    
+
+    <section
+      class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6"
+      id="Contact"
+    >
+      <h2 class="text-xl font-semibold">Contato</h2>
+      <p class="mt-1 text-sm text-zinc-200">
+        Está interessado em conversar, discutir ou fazer algo juntos?
+      </p>
+
+      <ContactLinks />
+      
+    </section>
+    <AcademicCard class="gap-4 grid-cols-2" />
+  </div>
+</section>
