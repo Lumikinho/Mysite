@@ -21,7 +21,7 @@ export default function AgeTimeCard() {
 
   return (
     <p className="text-zinc-200">
-      Tenho {age} anos e sou apaixonado por tecnologia.
+      Tenho {age} anos
     </p>
   );
 }

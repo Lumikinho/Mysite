@@ -28,7 +28,7 @@ export default function AgeTimeCard() {
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
-        }),
+        })
       );
     }, 1000);
 
@@ -38,10 +38,8 @@ export default function AgeTimeCard() {
   const age = getAge(BIRTHDATE);
 
   return (
-    
-          <p className="mt-2 text-zinc-300">
-            Tenho <span className="font-semibold">{age}</span> anos.
-          </p>
-       
+    <p className="mt-2 text-zinc-300">
+      Tenho <span className="font-semibold">{age}</span> anos.
+    </p>
   );
 }

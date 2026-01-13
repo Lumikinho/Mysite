@@ -17,7 +17,7 @@ const GithubProfilePicture: React.FC<GithubProfilePictureProps> = ({ username })
     // Fallback to a generic placeholder or the existing pravatar
     return (
       <img
-        src="https://i.pravatar.cc/150"
+        
         alt="Placeholder Avatar"
         width={150}
         height={150}
@@ -28,7 +28,7 @@ const GithubProfilePicture: React.FC<GithubProfilePictureProps> = ({ username })
 
   return (
     <img
-      src={user?.avatar_url || "https://i.pravatar.cc/150"}
+      src={user?.avatar_url || ""}
       alt={user?.name || user?.login || "GitHub Avatar"}
       width={150}
       height={150}
