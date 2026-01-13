@@ -1,0 +1,32 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+---
+
+<main class="mx-auto w-full max-w-5xl px-4 py-8 md:px-6 md:py-10">
+  <h1 class="text-3xl">Meu projetos</h1>
+
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <ProjectCard
+      title="Projeto 1"
+      description="Descrição do projeto 1. Fale sobre as tecnologias utilizadas, o que o projeto faz e o que você aprendeu com ele."
+      tags={["React", "TypeScript", "Tailwind CSS"]}
+      image={{
+        src: "https://via.placeholder.com/1280x720",
+        alt: "Placeholder for Project 1",
+      }}
+      githubUrl="https://github.com/seu-usuario/projeto-1"
+      liveUrl="https://seu-projeto-1.com"
+    />
+    <ProjectCard
+      title="Projeto 2"
+      description="Descrição do projeto 2. Fale sobre as tecnologias utilizadas, o que o projeto faz e o que você aprendeu com ele."
+      tags={["Astro", "JavaScript", "CSS"]}
+      image={{
+        src: "https://via.placeholder.com/1280x720",
+        alt: "Placeholder for Project 2",
+      }}
+      githubUrl="https://github.com/seu-usuario/projeto-2"
+      liveUrl="https://seu-projeto-2.com"
+    />
+  </div>
+</main>

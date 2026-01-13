@@ -1,0 +1,36 @@
+---
+const links = [
+  {
+    href: "https://www.linkedin.com/in/lucas-miranda-ribeiro-0a00b83a0/",
+    text: "LinkedIn",
+    className:
+      "bg-cyan-700 hover:bg-cyan-600",
+  },
+  {
+    href: "https://x.com/RootLumiko",
+    text: "(X) Twitter",
+    className:
+      "bg-zinc-700 hover:bg-zinc-600",
+  },
+  {
+    href: "mailto:Lucasmirandar11+contact@gmail.com",
+    text: "Email",
+    className:
+      "bg-red-800 hover:bg-red-700",
+  },
+];
+---
+
+<div class="mt-4 flex flex-wrap gap-2 text-xs">
+  {links.map((link) => (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noreferrer"
+      class={`inline-flex items-center gap-1 rounded-full border border-zinc-800 px-3 py-1 font-medium text-zinc-100 transition-colors hover:border-zinc-700 grayscale hover:grayscale-0 ${link.className}`}
+    >
+      {link.text}
+      <span class="text-[10px]">↗</span>
+    </a>
+  ))}
+</div>

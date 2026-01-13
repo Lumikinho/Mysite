@@ -1,45 +1,49 @@
-import React, { useEffect, useState } from "react";
-
-type GitHubUser = {
-  avatar_url: string;
-  html_url: string;
-  name: string | null;
-  login: string;
-  bio: string | null;
-  public_repos: number;
-  followers: number;
-};
+import React, { useState } from "react";
+import { useGithubProfile } from "../hooks/useGithubProfile";
 
 interface GithubCardProps {
-  username: string;
+  personalUsername: string;
+  academicUsername: string;
 }
 
-export default function GithubCard({ username }: GithubCardProps) {
-  const [user, setUser] = useState<GitHubUser | null>(null);
-  const [error, setError] = useState<string | null>(null);
+export default function GithubCard({
+  personalUsername,
+  academicUsername,
+}: GithubCardProps) {
+  const [profileType, setProfileType] = useState<"personal" | "academic">(
+    "personal"
+  );
 
-  useEffect(() => {
-    async function loadProfile() {
-      try {
-        const url = `https://api.github.com/users/${encodeURIComponent(
-          username,
-        )}`; // endpoint público de perfil.[web:186][web:189]
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Erro ao buscar GitHub");
-        const data = (await res.json()) as GitHubUser;
-        setUser(data);
-      } catch (err) {
-        console.error(err);
-        setError("Não foi possível carregar o perfil.");
-      }
-    }
+  const username =
+    profileType === "personal" ? personalUsername : academicUsername;
 
-    loadProfile();
-  }, [username]);
+  const { user, error, loading } = useGithubProfile(username);
+
+  const profileName = user ? user.name || user.login : "Meu GitHub";
+  const profileUsername = user ? `@${user.login}` : "@username";
+  const profileBio = error
+    ? error
+    : loading
+    ? "Carregando bio..."
+    : user
+    ? user.bio || "Sem descrição no perfil."
+    : "Carregando bio...";
+
+  const toggleProfile = () => {
+    setProfileType(profileType === "personal" ? "academic" : "personal");
+  };
 
   return (
-    <article className="flex flex-col gap-4 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6">
-      <h2 className="text-xl font-semibold">Github</h2>
+    <article className="flex flex-col gap-4 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 sm:p-6 grayscale hover:grayscale-0 transition-all duration-300">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg sm:text-xl font-semibold">Github</h2>
+        <button
+          onClick={toggleProfile}
+          className="inline-flex items-center gap-1 rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] font-medium text-zinc-100 transition-colors hover:border-zinc-700 hover:bg-zinc-800"
+        >
+          Alternar para {profileType === "personal" ? "Acadêmico" : "Pessoal"}
+        </button>
+      </div>
 
       <div className="flex items-center gap-4">
         <div className="h-14 w-14 overflow-hidden rounded-full bg-zinc-800">
@@ -47,24 +51,18 @@ export default function GithubCard({ username }: GithubCardProps) {
             <img
               src={user.avatar_url}
               alt={`Avatar de ${user.login}`}
+              width={56}
+              height={56}
               className="h-full w-full object-cover"
             />
           )}
         </div>
 
         <div className="flex-1">
-          <p className="text-sm font-semibold">
-            {user ? user.name || user.login : "Meu GitHub"}
-          </p>
-          <p className="text-xs text-zinc-400">
-            {user ? `@${user.login}` : "@username"}
-          </p>
+          <p className="text-sm font-semibold">{profileName}</p>
+          <p className="text-xs text-zinc-400">{profileUsername}</p>
           <p className="mt-1 line-clamp-2 text-xs text-zinc-400">
-            {error
-              ? error
-              : user
-              ? user.bio || "Sem descrição no perfil."
-              : "Carregando bio..."}
+            {profileBio}
           </p>
         </div>
       </div>
@@ -93,7 +91,7 @@ export default function GithubCard({ username }: GithubCardProps) {
           rel="noreferrer"
           className="inline-flex items-center gap-1 rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] font-medium text-zinc-100 transition-colors hover:border-zinc-700 hover:bg-zinc-800"
         >
-          Github
+          View my Github
           <span className="text-[10px]">↗</span>
         </a>
       </div>

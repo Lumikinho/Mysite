@@ -1,0 +1,57 @@
+---
+import AcademicCard from "../components/AcademicCard.astro";
+import ContactLinks from "../components/ContactLinks.astro";
+import GithubCard from "../components/GithubCard";
+import WeatherCard from "../components/Weather";
+import ProjectCard from "../components/ProjectCard.astro";
+import Skills from "../components/Skills.astro";
+import Languages from "../components/Languages.astro";
+---
+
+<section class="mt-8 space-y-4 md:space-y-6">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <WeatherCard
+      city="Sumare,BR"
+      apiKey={import.meta.env.PUBLIC_OPENWEATHER_KEY}
+      client:load
+    />
+    <GithubCard
+      personalUsername="Lumikinho"
+      academicUsername="lumikin"
+      client:load
+    />
+    {
+      /* CHANGE "lumikinho-academic" to your academic GitHub username in the line above */
+    }
+
+    <AcademicCard class="gap-4 grid-cols-1" />
+    <Skills />
+    <Languages />
+  </div>
+
+  <!--<h2 class="text-2xl font-bold tracking-tight">Projetos</h2>
+   <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <ProjectCard
+      title="Projeto 1"
+      description="Descrição do projeto 1. Fale sobre as tecnologias utilizadas, o que o projeto faz e o que você aprendeu com ele."
+      tags={["React", "TypeScript", "Tailwind CSS"]}
+      image={{
+        src: "https://via.placeholder.com/1280x720",
+        alt: "Placeholder for Project 1",
+      }}
+      githubUrl="https://github.com/seu-usuario/projeto-1"
+      liveUrl="https://seu-projeto-1.com"
+    />
+    <ProjectCard
+      title="Projeto 2"
+      description="Descrição do projeto 2. Fale sobre as tecnologias utilizadas, o que o projeto faz e o que você aprendeu com ele."
+      tags={["Astro", "JavaScript", "CSS"]}
+      image={{
+        src: "https://via.placeholder.com/1280x720",
+        alt: "Placeholder for Project 2",
+      }}
+      githubUrl="https://github.com/seu-usuario/projeto-2"
+      liveUrl="https://seu-projeto-2.com"
+    />
+  </div> -->
+</section>
