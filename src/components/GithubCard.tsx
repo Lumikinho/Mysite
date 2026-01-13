@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGithubProfile } from "../hooks/useGithubProfile";
 
 interface GithubCardProps {
-  username: string;
+  personalUsername: string;
+  academicUsername: string;
 }
 
-export default function GithubCard({ username }: GithubCardProps) {
+export default function GithubCard({
+  personalUsername,
+  academicUsername,
+}: GithubCardProps) {
+  const [profileType, setProfileType] = useState<"personal" | "academic">(
+    "personal"
+  );
+
+  const username =
+    profileType === "personal" ? personalUsername : academicUsername;
+
   const { user, error, loading } = useGithubProfile(username);
 
   const profileName = user ? user.name || user.login : "Meu GitHub";
@@ -18,9 +29,21 @@ export default function GithubCard({ username }: GithubCardProps) {
     ? user.bio || "Sem descrição no perfil."
     : "Carregando bio...";
 
+  const toggleProfile = () => {
+    setProfileType(profileType === "personal" ? "academic" : "personal");
+  };
+
   return (
     <article className="flex flex-col gap-4 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 sm:p-6 grayscale hover:grayscale-0 transition-all duration-300">
-      <h2 className="text-lg sm:text-xl font-semibold">Github</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg sm:text-xl font-semibold">Github</h2>
+        <button
+          onClick={toggleProfile}
+          className="inline-flex items-center gap-1 rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] font-medium text-zinc-100 transition-colors hover:border-zinc-700 hover:bg-zinc-800"
+        >
+          Alternar para {profileType === "personal" ? "Acadêmico" : "Pessoal"}
+        </button>
+      </div>
 
       <div className="flex items-center gap-4">
         <div className="h-14 w-14 overflow-hidden rounded-full bg-zinc-800">

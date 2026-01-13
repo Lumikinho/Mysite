@@ -1,0 +1,19 @@
+---
+const languages = [
+  { name: "Português", level: "Nativo" },
+  { name: "Inglês", level: "Avançado" },
+  { name: "Espanhol", level: "Básico" },
+];
+---
+
+<div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 flex flex-col gap-4">
+  <h2 class="text-xl font-semibold">Idiomas</h2>
+  <div class="flex flex-col gap-2">
+    {languages.map(lang => (
+      <div class="flex justify-between items-center">
+        <span class="text-sm font-medium text-zinc-300">{lang.name}</span>
+        <span class="text-sm text-zinc-400">{lang.level}</span>
+      </div>
+    ))}
+  </div>
+</div>
