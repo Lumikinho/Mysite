@@ -1,24 +1,10 @@
 ---
-import AcademicCard from "../components/AcademicCard.astro";
-import ContactLinks from "../components/ContactLinks.astro";
-import GithubCard from "../components/GithubCard";
-import WeatherCard from "../components/Weather";
 import ProjectCard from "../components/ProjectCard.astro";
 ---
 
-<section class="mt-8 space-y-4 md:space-y-6">
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-    <WeatherCard
-      city="Sumare,BR"
-      apiKey={import.meta.env.PUBLIC_OPENWEATHER_KEY}
-      client:load
-    />
-    <GithubCard username="Lumikinho" client:load />
+<main class="mx-auto w-full max-w-5xl px-4 py-8 md:px-6 md:py-10">
+  <h1 class="text-3xl">Meu projetos</h1>
 
-    <AcademicCard class="gap-4 grid-cols-1" />
-  </div>
-
-  <h2 class="text-2xl font-bold tracking-tight">Projetos</h2>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
     <ProjectCard
       title="Projeto 1"
@@ -43,5 +29,4 @@ import ProjectCard from "../components/ProjectCard.astro";
       liveUrl="https://seu-projeto-2.com"
     />
   </div>
-</section>
-
+</main>
