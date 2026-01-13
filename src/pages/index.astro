@@ -3,7 +3,6 @@ import "../styles/global.css";
 import About from "../layouts/About.astro";
 import Cards from "../layouts/Cards.astro";
 import Header from "../layouts/Header.astro";
-import Skills from "../components/Skills.tsx";
 ---
 
 <html lang="pt-BR">
@@ -12,15 +11,15 @@ import Skills from "../components/Skills.tsx";
     <title>Lumiko</title>
   </head>
 
-  <body class="min-h-screen bg-zinc-950 text-zinc-100 font-inter transition-all duration-300">
-    <Header />
-
+  <body
+    class="min-h-screen bg-zinc-950 text-zinc-100 font-inter transition-all duration-300"
+    >
+    
     <!-- CONTEÚDO -->
     <main class="mx-auto w-full max-w-5xl px-4 py-8 md:px-6 md:py-10">
+      <Header />
       <About />
       <Cards />
-      <Skills client:load />
     </main>
-    
   </body>
 </html>

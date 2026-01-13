@@ -68,7 +68,7 @@ export default function GithubCard({ username }: GithubCardProps) {
           rel="noreferrer"
           className="inline-flex items-center gap-1 rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] font-medium text-zinc-100 transition-colors hover:border-zinc-700 hover:bg-zinc-800"
         >
-          Github
+          View my Github
           <span className="text-[10px]">↗</span>
         </a>
       </div>
