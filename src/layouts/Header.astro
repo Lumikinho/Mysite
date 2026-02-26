@@ -4,23 +4,23 @@ import GithubProfilePicture from "../components/GithubProfilePicture.tsx";
 ---
 
 <header
-  class="mx-auto w-full max-w-5xl flex flex-row items-center justify-between gap-6 py-8 md:py-10"
+  class="mx-auto flex w-full max-w-5xl flex-col-reverse items-start gap-6 py-6 md:flex-row md:items-center md:justify-between md:gap-8 md:py-10"
 >
-  <div class="flex flex-col items-start gap-2">
+  <div class="flex w-full flex-col items-start gap-3">
     <h1 class="text-3xl font-bold tracking-tight md:text-4xl">Lumiko</h1>
 
-    <p class="text-lg text-zinc-400 md:text-xl">
+    <p class="text-base text-zinc-400 sm:text-lg md:text-xl">
       Estudante de Desenvolvimento de sistemas
     </p>
 
-    <a class="max-w-xl text-left text-zinc-300">
+    <a class="max-w-xl text-left text-sm text-zinc-300 sm:text-base">
       <AgeTimeCard client:load />
       <p class="inline-block">
         Atualmente estou estudando Desenvolvimento de Sistemas no Senai,
         ultilizando Express.js, node, javascript, html, css e MySql
       </p>
     </a>
-    <div class="flex items-center gap-4">
+    <div class="flex w-full flex-wrap items-center gap-3 sm:gap-4">
       <div
         class="inline-flex items-center gap-1 rounded-full border border-zinc-800 px-3 py-1 font-medium text-zinc-100 transition-colors hover:border-zinc-700 grayscale hover:grayscale-0 text-[14px]"
       >
@@ -33,7 +33,7 @@ import GithubProfilePicture from "../components/GithubProfilePicture.tsx";
         </a>
       </div>
 
-      <div class="flex items-center gap-4">
+      <div class="flex flex-wrap items-center gap-3 sm:gap-4">
         <div
           class="inline-flex items-center gap-1 rounded-full border border-zinc-800 px-3 py-1 font-medium text-zinc-100 transition-colors hover:border-zinc-700 grayscale hover:grayscale-0 text-[14px]"
         >
@@ -117,6 +117,8 @@ import GithubProfilePicture from "../components/GithubProfilePicture.tsx";
     </div>
   </div>
 
-  <GithubProfilePicture username="lumikinho" client:load />
+  <div class="mx-auto md:mx-0">
+    <GithubProfilePicture username="lumikinho" client:load />
+  </div>
   <!-- CHANGE "google" to your GitHub username in the line above -->
 </header>
