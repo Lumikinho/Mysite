@@ -1,6 +1,7 @@
 ---
 import AgeTimeCard from "../components/AgeTimeCard.tsx";
 import GithubProfilePicture from "../components/GithubProfilePicture.tsx";
+import SpeedInsights from '@vercel/speed-insights/astro'
 ---
 
 <header
@@ -120,3 +121,4 @@ import GithubProfilePicture from "../components/GithubProfilePicture.tsx";
   <GithubProfilePicture username="lumikinho" client:load />
   <!-- CHANGE "google" to your GitHub username in the line above -->
 </header>
+<SpeedInsights />

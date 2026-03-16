@@ -6,8 +6,9 @@ import WeatherCard from "../components/Weather";
 import ProjectCard from "../components/ProjectCard.astro";
 import Skills from "../components/Skills.astro";
 import Languages from "../components/Languages.astro";
+import SpeedInsights from '@vercel/speed-insights/astro'
 ---
-
+<SpeedInsights/>
 <section class="mt-8 space-y-4 md:space-y-6">
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
     <WeatherCard
