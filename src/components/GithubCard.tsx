@@ -17,7 +17,7 @@ export default function GithubCard({
   const username =
     profileType === "personal" ? personalUsername : academicUsername;
 
-  const { user, error, loading } = useGithubProfile(username);
+  const { user, contributions, error, loading } = useGithubProfile(username);
 
   const profileName = user ? user.name || user.login : "Meu GitHub";
   const profileUsername = user ? `@${user.login}` : "@username";
@@ -80,6 +80,13 @@ export default function GithubCard({
           <span className="font-semibold text-zinc-100">
             {" "}
             {user ? user.followers : "--"}
+          </span>
+        </p>
+        <p>
+          Contributions:
+          <span className="font-semibold text-zinc-100">
+            {" "}
+            {contributions ?? "--"}
           </span>
         </p>
       </div>
