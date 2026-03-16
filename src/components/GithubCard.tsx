@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useGithubProfile } from "../hooks/useGithubProfile";
+import GithubContributionGraph from "./GithubContributionGraph";
 
 interface GithubCardProps {
   personalUsername: string;
@@ -83,6 +84,8 @@ export default function GithubCard({
           </span>
         </p>
       </div>
+
+      <GithubContributionGraph username={username} />
 
       <div className="mt-2">
         <a
