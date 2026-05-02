@@ -1,0 +1,46 @@
+---
+import "../styles/global.css";
+import GlassNav from "../components/GlassNav.astro";
+import SpeedInsights from '@vercel/speed-insights/astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Lumiko", 
+  description = "Portfolio de Lumiko - Desenvolvedor de Sistemas" 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  </head>
+
+  <body
+    class="relative min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-100 font-inter transition-all duration-300"
+  >
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(60%_50%_at_15%_10%,rgba(255,255,255,0.08),transparent_60%)]"
+      ></div>
+      <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.0),rgba(0,0,0,0.75))]"></div>
+    </div>
+    
+    <main class="mx-auto w-full max-w-5xl px-4 py-8 pb-40 md:px-6 md:py-10">
+      <slot />
+    </main>
+
+    <GlassNav />
+    <SpeedInsights />
+  </body>
+</html>
