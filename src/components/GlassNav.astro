@@ -1,0 +1,52 @@
+---
+const pathname = Astro.url?.pathname ?? "/";
+const sectionRaw = pathname === "/" ? "" : pathname.replace(/^\/+/, "").split("/")[0] ?? "";
+const section = sectionRaw.toLowerCase();
+
+const items = [
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+];
+
+function isActive(href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+---
+
+<nav
+  aria-label="Primary"
+  class="pointer-events-none fixed inset-x-0 bottom-5 z-50 flex justify-center px-4"
+>
+  <div
+    class="pointer-events-auto w-full max-w-5xl rounded-full border border-white/20 bg-white/5 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.65)] backdrop-blur-xl"
+  >
+    <div class="flex items-center justify-between gap-4">
+      <a
+        href="/"
+        class="select-none text-xl font-extrabold tracking-tight text-zinc-100 md:text-3xl"
+      >
+        <span>Lumiko</span>
+        {section && <span class="text-zinc-500">/{section}</span>}
+      </a>
+
+      <div class="flex items-center gap-4 md:gap-6">
+        {
+          items.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                "text-base font-semibold tracking-tight transition-colors md:text-xl",
+                isActive(item.href)
+                  ? "text-zinc-100"
+                  : "text-zinc-100/35 hover:text-zinc-100/70",
+              ]}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</nav>

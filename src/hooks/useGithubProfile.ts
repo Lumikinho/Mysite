@@ -10,10 +10,6 @@ type GitHubUser = {
   followers: number;
 };
 
-type ContributionStats = {
-  totalContributions: number;
-};
-
 export function useGithubProfile(username: string) {
   const [user, setUser] = useState<GitHubUser | null>(null);
   const [contributions, setContributions] = useState<number | null>(null);
@@ -36,14 +32,7 @@ export function useGithubProfile(username: string) {
           username
         )}`;
 
-        const [profileRes, contributionsRes] = await Promise.all([
-          fetch(profileUrl),
-          fetch(
-            `/api/github-contributions.json?username=${encodeURIComponent(
-              username
-            )}`
-          ),
-        ]);
+        const profileRes = await fetch(profileUrl);
 
         if (!profileRes.ok) {
           throw new Error("Erro ao buscar GitHub");
@@ -51,14 +40,7 @@ export function useGithubProfile(username: string) {
 
         const profileData = (await profileRes.json()) as GitHubUser;
         setUser(profileData);
-
-        if (contributionsRes.ok) {
-          const contributionData =
-            (await contributionsRes.json()) as ContributionStats;
-          setContributions(contributionData.totalContributions);
-        } else {
-          setContributions(null);
-        }
+        setContributions(null);
       } catch (err) {
         console.error(err);
         setError("Não foi possível carregar o perfil.");

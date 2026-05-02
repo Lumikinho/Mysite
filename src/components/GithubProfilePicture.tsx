@@ -9,30 +9,35 @@ const GithubProfilePicture: React.FC<GithubProfilePictureProps> = ({ username })
   const { user, loading, error } = useGithubProfile(username);
 
   if (loading) {
-    return <div className="rounded-full bg-zinc-700 animate-pulse" style={{ width: 150, height: 150 }}></div>;
+    return (
+      <div
+        className="rounded-full bg-zinc-700 animate-pulse"
+        style={{ width: 220, height: 220 }}
+      ></div>
+    );
   }
 
   if (error) {
     console.error("Error loading GitHub profile picture:", error);
-    // Fallback to a generic placeholder or the existing pravatar
     return (
       <img
-        
+        src="https://github.com/identicons/guest.png"
         alt="Placeholder Avatar"
-        width={150}
-        height={150}
-        className="rounded-full"
+        width={220}
+        height={220}
+        className="rounded-full bg-zinc-800"
       />
     );
   }
 
   return (
     <img
-      src={user?.avatar_url || ""}
+      src={user?.avatar_url ? `${user.avatar_url}&s=440` : "https://github.com/identicons/guest.png"}
       alt={user?.name || user?.login || "GitHub Avatar"}
-      width={150}
-      height={150}
-      className="rounded-full"
+      width={220}
+      height={220}
+      className="rounded-full bg-zinc-800"
+      loading="eager"
     />
   );
 };
